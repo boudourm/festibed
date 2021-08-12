@@ -1,0 +1,37 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+<body>
+  <div>
+          <div class="container" *ngIf="!estVide">
+        <div class="row" >
+            <div class="col-md-6 col-sm-12 col-lg-4" *ngFor="let fets of festivals | paginate: { itemsPerPage: 9, currentPage: actualPage};index as i">
+                <div class="w3-container" >                  
+                    <div class="w3-card-4" style="width:100%;margin-top: 5px; margin-bottom: 21px;">
+                      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80" alt="Alps" style="width:100%">
+                      <div class="w3-container w3-center">
+                        <h4 class="card-title" style="color: brown; font-size: 20px;height: 55px;"><b>{{fets.nom}}</b></h4>
+                        <p *ngIf="!isItnullDD(i) ; else elseBlock">Date début: {{fets.dateDebut}}</p>
+                        <ng-template #elseBlock><p>Date début: --</p></ng-template>
+                        <p *ngIf="!isItnullDF(i) ; else elseBlock2">Date fin: {{fets.dateFin}}</p> 
+                        <ng-template #elseBlock2><p>Date fin: --</p></ng-template>
+                        <p>Nombre de places: {{fets.nbPlaceTotal}} </p>
+                       
+                      </div>
+                      <button  routerLink="/festivals/{{fets.id}}" class="button1">Détails<i class="fa fa-paper-plane-o ml-2"></i></button>
+                    </div>
+                  </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <pagination-controls (pageChange)="actualPage = $event" style="text-align: center;"></pagination-controls>
+</div>
+
+    <div *ngIf="estVide" style="height: 200px;">
+        <h1 style="color:red; text-align: center;">Pas de festivals pour ces critéres</h1>
+    </div>
+</body>

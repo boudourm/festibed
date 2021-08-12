@@ -1,0 +1,252 @@
+
+ <ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
+<div   [style.padding-bottom.%]="10">
+    <div class="head">
+        <button class="btn-back" (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+       <!--- <h1 style="text-align: center;font-size: 70px;color: brown;">Ajouter un festival</h1>
+        <br>-->
+    </div>
+   
+    <mat-card>
+  
+        <!--HEADER-->
+        <mat-card-header>
+            <mat-card-title>Hébergement </mat-card-title>
+            <mat-card-subtitle>Cliquez sur les informations que vous voulez renseigner. </mat-card-subtitle>
+        </mat-card-header> <br>
+        <form>
+        <div class="container">
+            <div class="row">
+                <!-- a gauche-->
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="photo">
+                            <img  class="img_festival"  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+                        </div>  
+    
+                     </div> 
+                 <div class="col-sm-6 col-xs-12">     
+                    <div class="form-group">
+                     <label id="example-radio-group-label">Type Hébergement</label>
+                     <mat-radio-group
+                       aria-labelledby="example-radio-group-label"
+                       class="example-radio-group"
+                       [(ngModel)]="favoriteSeason" [ngModelOptions]="{standalone: true}">
+                       <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                         {{season}}
+                       </mat-radio-button>
+                       <div class="grey-text font-weight-light">Your Favorite : {{favoriteSeason}}</div>
+                       </mat-radio-group>
+                    </div>
+                       <div class="col-sm-6 col-xs-12">     
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Nom Commercial</label>
+                            <input type="text" class="form-control">
+                        </div><br>
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Site Web</label>
+                            <input type="text" class="form-control">
+                        </div><br>
+                        </div>
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Catégorie</label>
+                            <input type="text" class="form-control">
+                        </div><br>
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Mention</label>
+                            <input type="text" class="form-control">
+                        </div><br>
+
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Télephone</label><br>
+                            <input type="tel" id="phone_num" class="form-control" name="phone_num" required/>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Classement</label>
+                            <input type="number" class="form-control">
+                        </div><br>  
+
+                <div class="form-group">
+                    <label class="grey-text font-weight-light"> date de classement</label> <br>
+                    <input type="date" 
+                    value="2020-01-28" >
+                </div> <br>
+
+                <div class="form-group">
+                    <label   class="grey-text font-weight-light" >Coordonnees</label>
+                    <input type="text" class="form-control">
+                </div><br>
+                <div class="form-group">
+                    <label   class="grey-text font-weight-light" >Courrierl</label>
+                    <input type="text" class="form-control">
+                </div><br>
+                <div class="form-group">
+                    <label   class="grey-text font-weight-light" >Adresse</label>
+                    <input type="text" class="form-control">
+                </div><br>
+
+                        <div class="form-group">
+                            <label class="grey-text font-weight-light">Commune  </label> <br>
+
+                            <select>
+                                <option value="">--Please choose an option--</option>
+                                <option value="St Martin d heres">St Martin d heres</option>
+                                <option value="Grenoble">Grenoble</option>
+                                <option value="Echirolles">Echirolles</option>  
+                            </select>
+                        </div><br> 
+                        <div class="form-group">
+                            <label class="grey-text font-weight-light">Code Postal  </label> <br>
+
+                            <select>
+                                <option value="">--Please choose an option--</option>
+                                <option value="38400">38400</option>
+                                <option value="38000">38000</option>
+                                <option value="38100">38100</option>  
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <label   class="grey-text font-weight-light" >Description</label> <br>
+                            <textarea cols="40" rows="5"></textarea>
+                        </div><br>
+
+
+                
+                </div>
+                 
+               
+            </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Hotel'">
+                   <label  class="grey-text font-weight-light" >Nombre de chambres simple</label>
+                    <input type="number" class="form-control">
+                 </div>
+            </div> <br>
+            <div class="form-group">
+            	<div class="hotel" *ngIf="favoriteSeason=='Hotel'">
+                 <label  class="grey-text font-weight-light" >Nombre de chambres doubles</label>
+                 <input type="number" class="form-control">
+                 </div>
+            </div> <br>
+
+            <div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Hotel'">
+                <label  class="grey-text font-weight-light" >Nombre de chambres familial</label>
+                <input type="number" class="form-control">
+                </div>
+            </div> <br>
+			<div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Hotel'">
+                 <label  class="grey-text font-weight-light" >Tarif adulte</label>
+                <input type="number" class="form-control">
+            </div>
+            </div> <br>
+            
+  
+
+            <div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Hotel'">
+                <label  class="grey-text font-weight-light" >Tarif enfant</label>
+                <input type="number" class="form-control">
+                 </div>
+                </div> <br>
+
+           <div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Hotel'">
+                <label  class="grey-text font-weight-light" >Tarif chambre</label>
+                <input type="number" class="form-control">
+               </div>
+            </div> <br>
+
+           <div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Camping'">
+                <label  class="grey-text font-weight-light" >Nombre d'emplacement</label>
+               <input type="number" class="form-control">
+                 </div>
+                </div> <br>
+                 <div class="form-group">
+                <div class="hotel" *ngIf="favoriteSeason=='Camping'">
+                <label  class="grey-text font-weight-light" >Tarif emplacement</label>
+                <input type="number" class="form-control">
+                </div>
+                </div> <br>
+                                                     <div class="form-group">
+                                                        <div class="hotel" *ngIf="favoriteSeason=='Residence'">
+                                                        <label  class="grey-text font-weight-light" >Capacité d'acceuil</label>
+                                                        <input type="number" class="form-control">
+                                                        </div>
+                                                         </div> <br>
+
+                                                            <div class="form-group">
+                                                                <div class="hotel" *ngIf="favoriteSeason=='Residence'">
+                                                                <label  class="grey-text font-weight-light" >Tarif</label>
+                                                                <input type="number" class="form-control">
+                                                                </div>
+                                                                </div> <br>
+                                                            <label class="grey-text font-weight-light" *ngIf="favoriteSeason=='Village Vacance'" >Collectif :</label>
+                                                                <div class="form-group">
+                                                                    <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                    <label  class="grey-text font-weight-light" >Tarif Adulte</label>
+                                                                    <input type="number" class="form-control">
+                                                                    </div>
+                                                                     </div> <br>
+                                                                     <div class="form-group">
+                                                                        <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                        <label  class="grey-text font-weight-light" >Tarif Enfant</label>
+                                                                        <input type="number" class="form-control">
+                                                                        </div>
+                                                                         </div> <br>
+                                                                         <div class="form-group">
+                                                                            <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                            <label  class="grey-text font-weight-light" >Nombre de lit disponible</label>
+                                                                            <input type="number" class="form-control">
+                                                                            </div>
+                                                                             </div> <br>
+                                                                             <label class="grey-text font-weight-light" *ngIf="favoriteSeason=='Village Vacance'">Chambre :</label>
+                                                                             <div class="form-group">
+                                                                                <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                                <label  class="grey-text font-weight-light" >Capacite Adulte</label>
+                                                                                <input type="number" class="form-control">
+                                                                                </div>
+                                                                                 </div> <br>
+                                                                                 <div class="form-group">
+                                                                                    <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                                    <label  class="grey-text font-weight-light" >Capacite enfant</label>
+                                                                                    <input type="number" class="form-control">
+                                                                                    </div>
+                                                                                     </div> <br>
+                                                                                     <div class="form-group">
+                                                                                        <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                                        <label  class="grey-text font-weight-light" >Tarif adulte</label>
+                                                                                        <input type="number" class="form-control">
+                                                                                        </div>
+                                                                                         </div> <br>
+                                                                                         <div class="form-group">
+                                                                                            <div class="hotel" *ngIf="favoriteSeason=='Village Vacance'">
+                                                                                            <label  class="grey-text font-weight-light" >Tarif enfant</label>
+                                                                                            <input type="number" class="form-control">
+                                                                                            </div>
+                                                                                             </div> <br>
+                       
+        
+
+
+
+
+            <div class="text-center py-4 mt-3">
+                <button type="submit">Ajouter Hébergement <i class="fa fa-paper-plane-o ml-2"></i></button>
+            
+              </div> 
+            
+        </form>
+        </mat-card>

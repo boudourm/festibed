@@ -1,0 +1,89 @@
+<ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+<div class="head">
+  <button class="btn-back" (click)="back()">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  <h1 style="text-align: center;font-size: 70px;color: brown;">{{festival.nom}}</h1>
+  <h4 style="text-align: center;color: gray;">Site web:<a href=" {{festival.siteWeb}}"> {{festival.siteWeb}} </a></h4>
+  <br>
+</div>
+<div class="container">
+  <div class="row">
+    <!-- a gauche-->
+    <div class="col-sm-6 col-xs-12">
+      <div class="photo">
+        <img  class="img_profile"  src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80">
+      </div>
+
+    </div>
+    <!-- Default input name -->
+    <div class="col-sm-6 col-xs-12">
+      <p><b>Date début: </b>{{festival.dateDebut}} </p>
+      <p><b>Date Fin: </b>{{festival.dateFin}} </p>
+      <p><b>Nombre places total: </b>{{festival.nbPlaceTotal}} </p>
+      <p><b>Commune: </b>{{festival.commune}} </p>
+      <p><b>Code postal: </b>{{festival.codePostal}} </p>
+    </div>
+  </div>
+</div>
+<br>
+<agm-map [latitude]='lat' [longitude]='lng'></agm-map>
+<!--places   <div fxFlex>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+  </div>-->
+<div class="container" *ngIf="cat1 ;else cat0" >
+  <div  *ngFor="let cat of places; index as i">
+    <div *ngIf="iscat1(i); else cat2">
+      <h3>Catégorie 1</h3>
+      <div class="row" *ngFor="let plc of cat.places; index as i">
+        <hr>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+          <h4>date</h4>
+          <p>{{plc.date}}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+          <h4>prix</h4>
+          <p>{{plc.prix}} euro </p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+          <h4>nombre de places</h4>
+          <p>{{plc.nbPlaces - panierServ.getNbPlaces(plc.id)}} palces </p>
+
+        </div>
+        <button style="border: none;background: white;" (click)="ajoutPlaceFestival(plc.id,plc.prix,plc.date,plc.nbPlaces - panierServ.getNbPlaces(plc.id))"><mat-icon>add</mat-icon></button>
+        <input type="number" id="quant{{plc.id}}" name="tentacles" min="0" max="{{plc.nbPlaces - panierServ.getNbPlaces(plc.id)}}" value="1">
+        <button style="border: none;background: white;" (click)="supprimerPlaceFestival(plc.id)"><mat-icon>delete</mat-icon></button>
+        <hr>
+      </div>
+    </div>
+    <ng-template #cat2>
+      <h3>Catégorie 2</h3>
+      <div class="row" *ngFor="let plc of cat.places; index as i">
+        <hr>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+          <h4>date</h4>
+          <p>{{plc.date}}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+          <h4>prix</h4>
+          <p>{{plc.prix}}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+          <h4>nombre de places</h4>
+          <p>{{plc.nbPlaces - panierServ.getNbPlaces(plc.id)}} palces </p>
+        </div>
+        <button style="border: none;background: white;" (click)="ajoutPlaceFestival(plc.id,plc.prix,plc.date,plc.nbPlaces - panierServ.getNbPlaces(plc.id))"><mat-icon>add</mat-icon></button>
+        <input type="number" id="quant{{plc.id}}" name="tentacles" min="0" max="{{plc.nbPlaces - panierServ.getNbPlaces(plc.id)}}" value="1">
+        <button style="border: none;background: white;" (click)="supprimerPlaceFestival(plc.id)"><mat-icon>delete</mat-icon></button>
+        <hr>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<ng-template #cat0>
+  <h3>Catégorie </h3>
+</ng-template>

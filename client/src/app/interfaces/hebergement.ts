@@ -1,0 +1,21 @@
+export interface hebergement{
+    idHeb:number,
+    dateClassement:string,
+    datePublication:string,
+    Typologie:string,
+    Classement:number,
+    Categorie:string,
+    Mention:string,
+    Telephone:string,
+    Courrierl:string,
+    SiteInternet:string,
+    CapaciteAcceuil:number,
+    Coordonnes:string,
+    Note:number,
+    Description:string,
+    NomCommercial:string,
+    Adresse:string,
+    CodePostal:string,
+    Commune: string,
+    
+}

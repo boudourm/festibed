@@ -1,0 +1,39 @@
+.head{
+    display: inherit;
+    z-index: 2;
+    padding-top: 3%;
+    padding-left: 35px;    
+   // padding-bottom: 3%;
+
+    .btn-back {
+        margin-top: 60px;
+        border: none;
+        background: transparent;
+        color: #111111;
+        cursor: pointer;
+        mat-icon{
+            font-size: 50px;
+        }
+    }
+}
+.button1 {
+    width: 97%;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid brown;
+  }
+  
+.button1:hover {
+    background-color: brown;
+    color: white;
+  }

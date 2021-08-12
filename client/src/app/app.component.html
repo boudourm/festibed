@@ -1,0 +1,70 @@
+<ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+<nav class="navbar navbar-expand-lg navbar-light ">
+
+ <!--- <img routerLink="accueil" class="logo" src="assets/images/logo.PNG" >-->
+
+  <img routerLink="Home" class="logo" src="assets/images/Logo120.PNG" >
+
+
+  <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="Home">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link" routerLink="Festivals">Festivals</a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link" href="#">Hébergements</a>
+      </li>-->
+
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Hébergement</a>
+        <div class="dropdown-content">
+          <a routerLink="hotel">Hotel</a>
+          <a routerLink="Camping">Camping</a>
+          <a routerLink="village-vacance">Village Vacance</a>
+          <a routerLink="residence">Résidence</a>
+        </div>
+  
+      </li>
+
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn"><mat-icon>person</mat-icon></a>
+        <div class="dropdown-content" *ngIf="authService.isLogin">
+          <a routerLink="EspaceClient">Profil</a>
+          <a href="#">Mes commandes</a>
+          <a for="state" *ngIf="estOrg" href="ajouter-festival">Ajouter Festival</a>
+         <!--- <a for="state" *ngIf="estHeber" href="ajouter-hebergement">Ajouter Hébergement</a>-->
+          <a routerLink="Home" (click)="logout()">Déconnexion</a>
+        </div>
+
+          <div class="dropdown-content" *ngIf="!authService.isLogin" >
+            <a routerLink="Login" >Se Connecter</a>
+          </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" mat-icon-button (click)="getPanier()" >
+          <mat-icon matBadge="{{ monPanier.festivals.length + monPanier.herbergs.length }}" matBadgeColor="warn">shopping_cart</mat-icon>
+       
+        </a>
+      </li>
+      <!--CONTENT PANIER style="transform: translate3d(200px, 0px, 0px);"-->
+        <!-- Container for sidebar(s) + page content -->
+        <ngx-flyout  [(open)]="openFlyout">
+          
+          <app-panier [listFest]="monPanier.festivals" [listHeb]="monPanier.herbergs" [total]="monPanier.total"></app-panier>
+        </ngx-flyout>
+
+    </ul>
+  </div>
+</nav>
+<br>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

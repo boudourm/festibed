@@ -1,0 +1,97 @@
+
+ <ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
+  <div *ngIf="!isLoading" class="client-content" [style.padding-bottom.%]="10">
+    <div class="head">
+        <button class="btn-back" (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+        <h1 style="text-align: center;font-size: 70px;color: brown;">Profil</h1>
+        <br>
+    </div>
+      <mat-card>
+  
+          <!--HEADER-->
+          <mat-card-header>
+              <mat-card-title>Mes informations</mat-card-title>
+              <mat-card-subtitle>Cliquez sur les informations que vous voulez modifier. </mat-card-subtitle>
+          </mat-card-header>
+          
+          
+  <form [formGroup]="espace"  (ngSubmit)="modifier()">
+    <div class="container">
+        <div class="row">
+            <!-- a gauche-->
+                <div class="col-sm-6 col-xs-12">
+                    <div class="photo">
+                        <img  class="img_profile"  src="https://www.banqueenligne.eu/fo/upload/5b6d879217b1e.png">
+                    </div>  
+
+                 </div>
+                        <!-- Default input name -->
+                <div class="col-sm-6 col-xs-12">     
+                    <div class="form-group">
+                        <label   class="grey-text font-weight-light" >Préom</label>
+                        <input type="text"
+                            id="nom"
+                            class="form-control"
+                            formControlName="nom" value=" {{client.secondName}}">
+                    </div>
+                
+                            <br>
+                
+                            <!-- Default input email -->
+                    <div class="form-group">
+                        <label   class="grey-text font-weight-light" >Nom</label>
+                        <input type="text"
+                            id="prenom"
+                            class="form-control"
+                            formControlName="prenom"  value=" {{client.name}}">
+                    </div>
+                    <br>
+                    
+                   
+                    <div class="form-group">
+                        {{client.state}}
+                        <label   class="grey-text font-weight-light" >Status</label>
+                        <input type="text"
+                            id="state"
+                            class="form-control"
+                            formControlName="state" disabled value=" {{client.state}}">
+                    </div>
+                    <div class="form-group">
+                    <div *ngIf="estClient">
+        
+                        <a href="" (click)="modifierStatus('Hébergeur')" style="color: black;font-size: 15px;">Devenir Hébergeur</a>
+                        <br>
+                        <a href="" (click)="modifierStatus('Organisateur')" style="color: black;font-size: 15px;">Devenir Organisateur</a>
+                    </div>
+                    <div *ngIf="estHeber">
+                        <a href="" (click)="modifierStatus('Client')" style="color: black;font-size: 15px;">Devenir Client</a>
+                        <br>
+                        <a href="" (click)="modifierStatus('Organisateur')" style="color: black;font-size: 15px;">Devenir Organisateur</a>
+                    </div>
+                    <div *ngIf="estOrg">
+                        <a href="" (click)="modifierStatus('Hébergeur')" style="color: black;font-size: 15px;">Devenir Hébergeur</a>
+                        <br>
+                        <a href="" (click)="modifierStatus('Client')" style="color: black;font-size: 15px;">Devenir Client</a>
+                    </div> 
+                    </div>
+                </div>
+        </div>       
+    </div>    
+         
+    <div class="text-center py-4 mt-3">
+        <button type="submit">Modifier mon compte<i class="fa fa-paper-plane-o ml-2"></i></button>
+    
+      </div> 
+           
+</form>
+            <!--Formulaire d'e modification-->
+            <br>
+      </mat-card>        
+        
+  </div>
+  

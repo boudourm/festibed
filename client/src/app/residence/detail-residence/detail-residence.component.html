@@ -1,0 +1,83 @@
+
+<header>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </header>
+    <ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+        <p style="color: white" > Loading... </p>
+    </ngx-spinner>
+    <div class="head">
+        <button class="btn-back" (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+      
+        <h1 style="text-align: center;font-size: 70px;color: brown;">{{res.nom}}</h1>
+        
+        <h2 style="text-align: center;font-size: 100%;color: grey;"><b>Catégorie : </b>Résidence</h2>
+        <br>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- a gauche-->
+               <div class="col-sm-6 col-xs-12">
+                    <div class="photo">
+                     <!---   <img  class="img_profile"  src="https://images.unsplash.com/photo-1539600937385-bd902dd379cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+                    </div>  -->
+    
+                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" >
+                      <div class="carousel-item active" >
+                        <img class="d-block w-100" src="{{Image[0]}}" alt="First slide">
+                      </div>
+                      <div class="carousel-item " *ngFor=" let im of Image; let index i">
+                        <img *ngIf="i!=0" class="d-block w-100" src="{{im}}" alt="First slide">
+                      </div>
+                      
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+    
+                </div>
+    
+    </div>
+    
+                        <!-- Default input name -->
+                 <div class="col-sm-6 col-xs-12"> 
+                  
+                  
+                   <p><b>Courrier : </b>{{camp.courrier}}</p>
+                  <p><b>Description : </b>{{camp.description}}</p>
+                  <b>Note : </b><mat-icon [ngClass]="{'mat-green': camp.note >= 5, 'mat-red': camp.note < 5}">star</mat-icon> <br><br>
+            
+                  <p><b>Classement : </b>{{ res.classement}}</p>
+                  <p><b>Adresse : </b>{{ res.adresse}}</p>
+                  <p><b>CodePostal : </b>{{ res.codePostal}}</p>
+                  <p><b>Commune : </b>{{ res.commune}}</p>
+                  <p><b>Département : </b>{{ res.departement}}</p>
+                  <p><b>Tarif :</b>{{res.tarif}}</p>
+                  <p><b>Capacité :</b>{{res.capacite}}</p>
+                </div>
+                        
+    
+                
+        
+            </div>
+    </div>       
+      <br>
+    
+    
+      
+    
+    

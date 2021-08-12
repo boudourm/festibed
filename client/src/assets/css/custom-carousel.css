@@ -1,0 +1,76 @@
+body .carousel-content{
+  display: contents;
+}
+body .ui-carousel {
+  background-color: transparent !important;
+}
+
+body .ui-carousel .ui-carousel-header {
+  color: white !important;
+  padding: 0 !important;
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+  margin: 0;
+}
+
+body .ui-carousel .ui-carousel-header .ui-carousel-header-title {
+  font-size: 22px !important;
+  font-weight: lighter !important;
+}
+
+body .ui-carousel .ui-carousel-viewport {
+  border: 1px solid transparent !important;
+  color: white !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+body .ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item {
+  border: 1px solid transparent !important;
+}
+
+body .ui-carousel .ui-carousel-button {
+  color: white !important;
+}
+
+body .ui-carousel .ui-carousel-page-links {
+  margin: 0.125em 0.5em;
+}
+
+body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link {
+  color: white !important;
+}
+
+body .pi-circle-on {
+  background-color: #fff !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+}
+
+body .pi-circle-off {
+  background-color: #fff !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+}
+
+body li {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+body .ui-state-active, body .ui-state-highlight {
+  background-color: #c2185b !important;
+  color: #ffffff00 !important;
+  border-radius: 50% !important;
+  border-top: dotted;
+  top: -3px;
+  position: relative;
+}
+
+body .ui-button .ui-widget .ui-state-default .ui-corner-all {
+  background-color: #fff !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+}

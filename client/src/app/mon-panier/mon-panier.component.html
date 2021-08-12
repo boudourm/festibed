@@ -1,0 +1,39 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body >
+<div class="head">
+  <button class="btn-back" (click)="back()">
+  <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  <h1 style="text-align: center;">MON PANIER</h1>
+  <br>
+</div>
+
+<div id="element-to-export"  #content class="container" *ngIf="!estVide()" >
+  <h5>Total de votre panier : {{panierServ.getTotal()}} euro</h5>
+  <div   *ngFor="let fest of monPanier.festivals">
+    <p-panel header="{{fest.nomF}}"  [style]="{'margin-bottom':'20px'}">
+      <div class="row">
+        <div class="col-md-4">
+         <!--<img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80" alt="Alps" style="width:70%;height: 70px;">--> 
+        <img src="../../assets/images/background1.jpg" style="width:70%;height: 70px;">
+        </div>
+        <div class="col-md-4">
+          <p>Nombre de places: {{fest.nbPlaces}}</p>
+          <p >Prix: {{fest.prix}} euro</p>
+          <p>Date évenement:{{fest.date}} </p>
+        </div>
+        <div class="col-md-4">
+          <button style="border: none;background: white;" (click)="supprimerPlaceFestival(fest.idP)"><mat-icon>delete</mat-icon></button>
+        </div>
+      </div>
+     
+    </p-panel>
+    </div>
+    <button class="button1"  label="Telecharger" (click)="dPDF()">VALIDER MON PANIER</button>
+</div>
+<div *ngIf="estVide()">
+  <h3 style="text-align: center;">Votre Panier est vide</h3> 
+</div>
+<br>
+</body>

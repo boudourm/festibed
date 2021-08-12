@@ -1,0 +1,27 @@
+<p style="font-size: 19px; text-align: center;" >Total panier: {{panierServ.getTotal()}}</p>
+<div class="container" *ngIf="!panierEstVide()" >
+    Les festivals
+    <div class="row" *ngFor="let fest of listFest">
+        <div class="col-sm-6">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80" alt="Alps" style="width:100%">
+        </div>
+        <div class="col-sm-6">
+           <b style="font-size: 15px;">{{fest.nomF}}</b> 
+           <p style="font-size: 10px;">nombre de places: {{fest.nbPlaces}}</p>
+           <button style="border: none;background: white;" (click)="supprimerPlaceFestival(fest.idP)"><mat-icon>delete</mat-icon></button>
+        </div>
+        <hr style="width: 100%;color: black;">
+    </div>
+</div>
+
+<div *ngIf="panierEstVide()">
+<p style="font-size: 10px; text-align: center;">Votre panier est vide</p>
+</div>
+
+<!--Panier vide-->
+<div *ngIf="!authServ.isLogin ; else auth">
+    <button class="button1">Se connecter</button>
+</div>
+<ng-template  #auth>
+    <button class="button1" routerLink="Panier">Voir mon panier</button>
+</ng-template>

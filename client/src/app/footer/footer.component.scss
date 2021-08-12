@@ -1,0 +1,26 @@
+footer{
+  /*font-weight: lighter;*/
+  background-color: brown;
+}
+
+
+.image{
+  height: 30px;
+  right:70%;
+
+}
+.contacte{
+  margin-left: 10%;
+  @media only screen and (max-width:600px) {
+    margin-left: 10%;
+  }
+}
+b{
+  font-size: 15px;
+}
+td{
+  width: 50px;
+}
+
+
+

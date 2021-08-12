@@ -1,0 +1,154 @@
+
+ <ngx-spinner  bdOpacity = 0.9 bdColor = "rgba(147,140,140,0.43)" size = "medium" color = "#800000" type = "ball-atom" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
+<div   [style.padding-bottom.%]="10">
+    <div class="head">
+        <button class="btn-back" (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+       <!--- <h1 style="text-align: center;font-size: 70px;color: brown;">Ajouter un festival</h1>
+        <br>-->
+    </div>
+
+    <form [formGroup]="FestivForm" >
+        
+    <mat-card>
+  
+        <!--HEADER-->
+        <mat-card-header>
+            <mat-card-title>Festival </mat-card-title>
+            <mat-card-subtitle>Cliquez sur les informations que vous voulez renseigner. </mat-card-subtitle>
+        </mat-card-header> <br>
+       
+
+        <div class="container">
+            <h5 style="color: red;text-align: center;">Tous les champs avec * sont obligatoires</h5>
+            <br>
+            <div class="row">
+                <!-- a gauche-->
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="photo">
+                            <img  class="img_festival"  src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+                        </div>  
+    
+                     </div> 
+
+                    
+                        <div class="col-sm-6 col-xs-12">     
+                            <div class="form-group">
+
+                                <label   class="grey-text font-weight-light" >Nom Festival*</label>
+                                <input type="text" class="form-control" formControlName="nom"   required autofocus>
+                            </div><br>
+
+                            <div class="form-group">
+
+                                <label   class="grey-text font-weight-light" >Site Web*</label>
+                                <input type="text" class="form-control" formControlName="site"  required autofocus>
+                            </div><br>
+                        
+                            <div class="form-group">
+                                <label  >Catégorie 1 :</label><br>
+
+                                <label   class="grey-text font-weight-light" >Prix*: </label>
+                                <input type="number" class="form-control" formControlName="prixcat1"  required autofocus>
+                                <label   class="grey-text font-weight-light" >Nombre de Places* : </label>
+                                <input type="number" class="form-control" formControlName="NbPlaceCat1"  required autofocus>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label  >Catégorie 2 :</label><br>
+                                <label   class="grey-text font-weight-light" >Prix: </label>
+                                <input type="number" class="form-control" formControlName="prixcat2" >
+                                <label   class="grey-text font-weight-light" >Nombre de Places : </label>
+                                <input type="number" class="form-control" formControlName="NbPlaceCat2" >
+                            </div><br>
+
+                        
+
+                            <div class="form-group">
+
+                                <label   class="grey-text font-weight-light" >Adresse*</label>
+                                <input type="text" class="form-control" formControlName="adresse"  required autofocus>
+                            </div><br>
+
+                    <div class="form-group">
+
+                        <label class="grey-text font-weight-light">Date de début* </label> <br>
+                        <input type="date" formControlName="dateDebut"  required autofocus value="2020-01-28" >
+                    </div> <br>
+                    <div class="form-group">
+                        <label class="grey-text font-weight-light">Date de fin* </label> <br>
+                        <input type="date" formControlName="dateFin"  required autofocus value="2020-01-28">
+                    </div> <br>
+
+                            
+                       
+
+                            <div class="form-group">
+                                <label class="grey-text font-weight-light">Département*  </label> <br>
+
+                                <select formControlName="departement"  required autofocus>
+                                    <option value="">--Please choose an option--</option>      
+                                   <option *ngFor="let depart of Dep">{{depart}}</option>    
+                                
+                                </select>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label class="grey-text font-weight-light">Domaine*  </label> <br>
+
+                                <select formControlName="Domaine"  required autofocus>
+                                    <option  value="">--Please choose an option--</option>
+                                    <option *ngFor="let d of Dom" >{{d}}</option>                              
+                                </select>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label class="grey-text font-weight-light">Région*  </label> <br>
+
+                                <select formControlName="region"  required autofocus>
+                                    <option value="">--Please choose an option--</option>
+                                    <option  *ngFor="let r of reg">{{r}}></option>
+                                   
+                                </select>
+                            </div><br>
+
+
+                            <div class="form-group">
+
+                                <label   class="grey-text font-weight-light" >Commune*</label>
+                                <input type="text" class="form-control" formControlName="Commune"  required autofocus>
+                            </div><br>
+
+                            <div class="form-group">
+
+                                <label   class="grey-text font-weight-light" >Code Postal*</label>
+                                <input type="text" class="form-control" formControlName="CodePostal"  required autofocus>
+                            </div><br>
+
+                            <div class="form-group">
+
+                                <label   class="grey-text font-weight-light" >Complément de domaine*</label>
+                                <input type="text" class="form-control" formControlName="ComplementDomaine"  required autofocus>
+                            </div><br>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="text-center py-4 mt-3">
+
+
+                            <button [disabled]="FestivForm.invalid" (click)="addFestival()">Ajouter Festival <i class="fa fa-paper-plane-o ml-2"></i></button>
+
+                        
+                          </div> 
+                                             
+                        </mat-card>
+                    </form><br>
